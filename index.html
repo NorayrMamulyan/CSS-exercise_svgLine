@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div id="wrapper">
+        <!--container1-->
+        <div id="container" class="container" onclick="addFunc()">
+            <img src="card-img.jpg" class="img" alt="Your img doesn't set">
+            <h4 class="title">Ծրագրավորողների խումբ</h4>
+            <p>Յուրաքանչյուր տեքստ պարունակում է բովանդակային պահանջ,որի սպառմանը ձգտելու արդյունքում այն ստեղծվել է հարաբերականորեն:</p>
+        </div>
+        <!--line-->
+        <svg id="line">
+    <text id="svg-text" x="245" y="275">Ուսուցում</text>
+    <line id="svg-line" x1="160" y1="280" x2="400" y2="280" style="stroke:black" />
+  </svg>
+        <!--container2-->
+        <div id="container2" class="container container2" onclick="addFunc()">
+            <img src="card-img.jpg" class="img" alt="Your img doesn't set">
+            <h4 class="title">Ծրագրավորողների խումբ</h4>
+            <p>Յուրաքանչյուր տեքստ պարունակում է բովանդակային պահանջ,որի սպառմանը ձգտելու արդյունքում այն ստեղծվել է հարաբերականորեն: </p>
+        </div>
+    </div>
+
+    <script>
+        //Grabbing only the line from the svg
+        var svgLine = document.getElementById('svg-line');
+        //grabbing start and end points of line
+        var lineStart_defaultValue = svgLine.x1.baseVal.value,
+            lineEnd_defaultValue = svgLine.x2.baseVal.value;
+
+        //creating variables for #wrapper's childs
+        var ctr1 = document.getElementById('container');
+        var ctr2 = document.getElementById('container2');
+        var line = document.getElementById('line');
+        var img = document.querySelectorAll(".img");
+        var title = document.querySelectorAll(".title");
+        var par = document.getElementsByTagName("p");
+
+        //Function which is gonna make @keyframes work
+        function addFunc() {
+            if (ctr1.className == "container") {
+                ctr1.classList.add("ctr1-anim1");
+                ctr2.classList.add("ctr2-anim1");
+                //Making components disappear & appear
+                img[0].classList.add("opacity");
+                par[0].classList.add("opacity");
+                title[1].classList.add("opacity");
+
+                //adding line animation
+                //assigning the points (starts from ... to ...)
+                var lineStart_value = 115,
+                    lineEnd_value = 448;
+                //creating recursion (to make line extend during some time)
+                function lineAnim() {
+                    requestAnimationFrame(lineAnim);
+                    if (lineStart_defaultValue >= lineStart_value && lineStart_defaultValue <= lineEnd_value) {
+                        svgLine.x1.baseVal.value = lineStart_defaultValue--;
+                        svgLine.x2.baseVal.value = lineEnd_defaultValue++;
+                    }
+                }
+                lineAnim();
+                line.classList.add("line-anim");
+            } else if (ctr1.className == "container ctr1-anim1") {
+                ctr1.classList.add("ctr1-anim2");
+                ctr2.classList.add("ctr2-anim2");
+                //Making components disappear & appear
+                img[0].classList.remove("opacity");
+                par[0].classList.remove("opacity");
+                title[0].classList.add("opacity");
+                par[1].classList.add("opacity");
+                title[1].classList.remove("opacity");
+
+                //line
+                line.classList.add("line-anim2");
+            } else if (ctr1.className == "container ctr1-anim1 ctr1-anim2") {
+                //Returning everything back
+                ctr1.classList.add("ctr1-anim3");
+                ctr2.classList.add("ctr2-anim3");
+                line.classList.add("line-anim3");
+                setTimeout(function() {
+                    ctr1.classList.remove("ctr1-anim1", "ctr1-anim2", "ctr1-anim3");
+                    ctr2.classList.remove("ctr2-anim1", "ctr2-anim2", "ctr2-anim3");
+                    line.classList.remove("line-anim", "line-anim2", "line-anim3");
+                }, 1000);
+                //Making components disappear & appear
+                title[0].classList.remove("opacity");
+                par[1].classList.remove("opacity");
+
+            }
+        }
+    </script>
+</body>
+
+</html>

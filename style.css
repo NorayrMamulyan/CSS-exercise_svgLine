@@ -1,0 +1,222 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: "GHEAGrpalatReg";
+}
+
+@font-face {
+    font-family: "GHEAGrpalatReg";
+    src: url("GHEAGrpalatReg.otf");
+}
+
+#wrapper {
+    position: absolute;
+    height: 600px;
+}
+
+.container {
+    position: absolute;
+    display: inline-block;
+    top: 136px;
+    -webkit-box-shadow: 2px 2px 3px 2px #888888;
+    box-shadow: 2px 2px 3px 2px #888888;
+    border-radius: 10px;
+    overflow: hidden;
+    height: 278px;
+    min-width: 150px;
+    text-align: center;
+    cursor: pointer;
+    z-index: 1;
+    background-color: white;
+}
+
+h4 {
+    border-bottom: 1px solid gray;
+    margin: 3px 7px 12px 7px;
+}
+
+.container2 {
+    left: 400px;
+}
+
+.img {
+    display: block;
+    position: relative;
+    width: 160px;
+}
+
+.container p {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+    overflow: hidden;
+    line-height: 1;
+    height: 112px;
+    font-size: 14px;
+    color: #888888;
+    margin: auto 5px;
+    text-align: left;
+}
+
+#line {
+    position: absolute;
+    width: 663px;
+    height: 663px;
+    transform-origin: 280px 280px;
+}
+
+.line-anim {
+    animation: line 0.9s;
+    animation-fill-mode: forwards;
+}
+
+.line-anim2 {
+    animation: line2 0.9s;
+    animation-fill-mode: forwards;
+}
+
+.line-anim3 {
+    animation: line3 0.9s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes line {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(45deg);
+    }
+}
+
+@keyframes line2 {
+    from {
+        transform: rotate(45deg);
+    }
+    to {
+        transform: rotate(-45deg);
+    }
+}
+
+@keyframes line3 {
+    from {
+        transform: rotate(-45deg);
+    }
+    to {
+        transform: rotate(0deg);
+    }
+}
+
+
+/*For first container*/
+
+.ctr1-anim1 {
+    animation: ctr1-anim1 1s;
+    animation-fill-mode: forwards;
+}
+
+.ctr1-anim2 {
+    animation: ctr1-anim2 1s;
+    animation-fill-mode: forwards;
+}
+
+.ctr1-anim3 {
+    animation: ctr1-anim3 1s;
+    animation-fill-mode: forwards;
+}
+
+
+/*For second container*/
+
+.ctr2-anim1 {
+    animation: ctr2-anim1 1s;
+    animation-fill-mode: forwards;
+}
+
+.ctr2-anim2 {
+    animation: ctr2-anim2 1s;
+    animation-fill-mode: forwards;
+}
+
+.ctr2-anim3 {
+    animation: ctr2-anim3 1s;
+    animation-fill-mode: forwards;
+}
+
+
+/*opacity*/
+
+.opacity {
+    animation: opacity 1s;
+    animation-fill-mode: forwards;
+}
+
+.line {
+    -webkit-animation: line 5s;
+    animation: line 5s;
+}
+
+@keyframes ctr1-anim1 {
+    from {
+        top: 136px;
+    }
+    to {
+        top: 36px;
+    }
+}
+
+@keyframes ctr1-anim2 {
+    from {
+        top: 36px;
+    }
+    to {
+        top: 286px;
+    }
+}
+
+@keyframes ctr1-anim3 {
+    from {
+        top: 286px;
+    }
+    to {
+        top: 136px;
+    }
+}
+
+@keyframes ctr2-anim1 {
+    from {
+        top: 136px;
+    }
+    to {
+        top: 236px;
+    }
+}
+
+@keyframes ctr2-anim2 {
+    from {
+        top: 236px;
+    }
+    to {
+        top: 36px;
+    }
+}
+
+@keyframes ctr2-anim3 {
+    from {
+        top: 36px;
+    }
+    to {
+        top: 136px;
+    }
+}
+
+@keyframes opacity {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
