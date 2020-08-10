@@ -19,9 +19,9 @@
         </div>
         <!--line-->
         <svg id="line">
-    <text id="svg-text" x="245" y="275">Ուսուցում</text>
-    <line id="svg-line" x1="160" y1="280" x2="400" y2="280" style="stroke:black" />
-  </svg>
+            <text id="svg-text" x="245" y="275">Ուսուցում</text>
+            <line id="svg-line" x1="150" y1="280" x2="400" y2="280" style="stroke:black" />
+        </svg>
         <!--container2-->
         <div id="container2" class="container container2" onclick="addFunc()">
             <img src="card-img.jpg" class="img" alt="Your img doesn't set">
@@ -33,20 +33,33 @@
     <script>
         //Grabbing only the line from the svg
         var svgLine = document.getElementById('svg-line');
-        //grabbing start and end points of line
-        var lineStart_defaultValue = svgLine.x1.baseVal.value,
-            lineEnd_defaultValue = svgLine.x2.baseVal.value;
 
         //creating variables for #wrapper's childs
         var ctr1 = document.getElementById('container');
+        var ctr1Left = ctr1.style.left = 0 + 'px';
+        var ctr1Top = ctr1.style.top = 136 + 'px';
         var ctr2 = document.getElementById('container2');
+        var ctr2Left = ctr2.style.left = 400 + 'px';
+        var ctr2Top = ctr2.style.top = 136 + 'px';
         var line = document.getElementById('line');
         var img = document.querySelectorAll(".img");
         var title = document.querySelectorAll(".title");
         var par = document.getElementsByTagName("p");
 
+        //grabbing start and end points of line
+        var lineX1 = ctr1.clientWidth + parseInt(ctr1Left),
+            lineX2 = parseInt(ctr2Left),
+            lineY1 = parseInt(ctr1Top) + (ctr1.clientHeight / 2) + 5,
+            lineY2 = parseInt(ctr1Top) + (ctr1.clientHeight / 2) + 5;
+
+
         //Function which is gonna make @keyframes work
         function addFunc() {
+            var point1 = 0;
+            //points of line
+            lineX1 += point1;
+            lineY1 += point1;
+
             if (ctr1.className == "container") {
                 ctr1.classList.add("ctr1-anim1");
                 ctr2.classList.add("ctr2-anim1");
@@ -57,17 +70,7 @@
 
                 //adding line animation
                 //assigning the points (starts from ... to ...)
-                var lineStart_value = 115,
-                    lineEnd_value = 448;
-                //creating recursion (to make line extend during some time)
-                function lineAnim() {
-                    requestAnimationFrame(lineAnim);
-                    if (lineStart_defaultValue >= lineStart_value && lineStart_defaultValue <= lineEnd_value) {
-                        svgLine.x1.baseVal.value = lineStart_defaultValue--;
-                        svgLine.x2.baseVal.value = lineEnd_defaultValue++;
-                    }
-                }
-                lineAnim();
+
                 line.classList.add("line-anim");
             } else if (ctr1.className == "container ctr1-anim1") {
                 ctr1.classList.add("ctr1-anim2");
